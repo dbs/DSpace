@@ -121,3 +121,11 @@ span.batchimport-error-caused {
         margin: 0;
     }
 }
+
+
+/* Customizations */
+
+ .discovery-query select, .discovery-query input, .discovery-search-filters
+ input {
+     max-width: 16em;
+ }
