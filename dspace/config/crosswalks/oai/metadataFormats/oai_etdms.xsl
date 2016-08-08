@@ -83,6 +83,36 @@
 			<xsl:for-each select="doc:metadata/doc:element[@name='dc']/doc:element[@name='source']/doc:element/doc:element/doc:field[@name='value']">
 				<source><xsl:value-of select="." /></source>
 			</xsl:for-each>
+			<xsl:for-each select="doc:metadata/doc:element[@name='bundles']/doc:element/doc:field[text()='ORIGINAL']">
+				<xsl:for-each select="../doc:element[@name='bitstreams']/doc:element">
+					<identifier>
+						<xsl:value-of select="doc:field[@name='url']/text()"/>
+					</identifier>
+					<format>
+						<xsl:value-of select="doc:field[@name='format']/text()" />
+					</format>
+				</xsl:for-each>
+			</xsl:for-each>
+			<xsl:for-each select="doc:metadata/doc:element[@name='dc']/doc:element[@name='description']/doc:element[@name='degree']/doc:element/doc:field[@name='value']">
+				<degree>
+					<name><xsl:value-of select="."/></name>
+					<xsl:choose>
+						<xsl:when test="contains(., 'Master')">
+							<level>master's</level>
+						</xsl:when>
+						<xsl:when test="contains(., 'Maitrise')">
+							<level>master's</level>
+						</xsl:when>
+						<xsl:when test="contains(., 'Doctor')">
+							<level>doctoral</level>
+						</xsl:when>
+						<xsl:otherwise>
+							<level>undergraduate</level>
+						</xsl:otherwise>
+					</xsl:choose>
+					<grantor>Laurentian University of Sudbury</grantor>
+				</degree>
+			</xsl:for-each>
 			<xsl:if test="doc:metadata/doc:element[@name='thesis']">
 			<degree>
 			<xsl:for-each select="doc:metadata/doc:element[@name='thesis']/doc:element[@name='name']/doc:element/doc:field[@name='value']">
