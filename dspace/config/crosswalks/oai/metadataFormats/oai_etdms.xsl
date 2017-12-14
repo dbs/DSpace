@@ -86,7 +86,7 @@
 			<xsl:for-each select="doc:metadata/doc:element[@name='bundles']/doc:element/doc:field[text()='ORIGINAL']">
 				<xsl:for-each select="../doc:element[@name='bitstreams']/doc:element">
 					<identifier>
-						<xsl:value-of select="doc:field[@name='url']/text()"/>
+                        <xsl:value-of select="concat('https://', doc:field[@name='url']/text())"/>
 					</identifier>
 					<format>
 						<xsl:value-of select="doc:field[@name='format']/text()" />
