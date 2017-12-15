@@ -24,6 +24,7 @@
 			xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 			xsi:schemaLocation="http://www.loc.gov/MARC21/slim http://www.loc.gov/standards/marcxml/schema/MARC21slim.xsd">
 			<leader>00925nam a22002775a 4500</leader>
+            <controlfield tag="008">               onc     sm    000 0 eng d</controlfield>
 			<xsl:for-each select="doc:metadata/doc:element[@name='dc']/doc:element[@name='identifier']/doc:element/doc:element/doc:field[@name='value']">
 			<datafield ind1="8" ind2=" " tag="024">
 				<subfield code="a"><xsl:value-of select="." /></subfield>
