@@ -62,7 +62,7 @@
 				<subfield code="c"><xsl:value-of select="$pubdate" /></subfield>
 			</datafield>
 			<datafield ind2="0" ind1=" " tag="490">
-                <subfield code="a"><xsl:text>Canadian theses = Théses canadiennes</xsl:text></subfield>
+                <subfield code="a"><xsl:text>Canadian theses = Thèses canadiennes</xsl:text></subfield>
 			</datafield>
 			<xsl:for-each select="doc:metadata/doc:element[@name='dc']/doc:element[@name='description']/doc:element[@name='degree']/doc:element/doc:field[@name='value']">
                 <datafield ind2=" " ind1=" " tag="502">
