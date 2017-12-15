@@ -24,7 +24,19 @@
 			xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 			xsi:schemaLocation="http://www.loc.gov/MARC21/slim http://www.loc.gov/standards/marcxml/schema/MARC21slim.xsd">
 			<leader>00925nam a22002775a 4500</leader>
-            <controlfield tag="008">               onc     sm    000 0 eng d</controlfield>
+			<xsl:variable name="pubdate" select="doc:metadata/doc:element[@name='dc']/doc:element[@name='date']/doc:element[@name='issued']/doc:element/doc:field[@name='value']" />
+            <xsl:choose>
+                <xsl:when test="string-length($pubdate) &gt;= 4">
+                    <controlfield tag="008">
+                        <xsl:text>       </xsl:text>
+                        <xsl:value-of select="substring($pubdate, 0, 5)"/>
+                        <xsl:text>onc     sm    000 0 eng d</xsl:text>
+                    </controlfield>
+                </xsl:when>
+                <xsl:otherwise>
+                    <controlfield tag="008"><xsl:text>               onc     sm    000 0 eng d</xsl:text></controlfield>
+                </xsl:otherwise>
+            </xsl:choose>
 			<xsl:for-each select="doc:metadata/doc:element[@name='dc']/doc:element[@name='identifier']/doc:element/doc:element/doc:field[@name='value']">
 			<datafield ind1="8" ind2=" " tag="024">
 				<subfield code="a"><xsl:value-of select="." /></subfield>
@@ -44,13 +56,11 @@
 				<subfield code="a"><xsl:value-of select="." /></subfield>
 			</datafield>
 			</xsl:for-each>
-			<xsl:for-each select="doc:metadata/doc:element[@name='dc']/doc:element[@name='date']/doc:element[@name='issued']/doc:element/doc:field[@name='value']">
 			<datafield ind2="1" ind1=" " tag="264">
                 <subfield code="a"><xsl:text>Sudbury, Ont. :</xsl:text></subfield>
                 <subfield code="b"><xsl:text>Laurentian University, Faculty of Graduate Studies,</xsl:text></subfield>
-				<subfield code="c"><xsl:value-of select="." /></subfield>
+				<subfield code="c"><xsl:value-of select="$pubdate" /></subfield>
 			</datafield>
-			</xsl:for-each>
 			<datafield ind2="0" ind1=" " tag="490">
                 <subfield code="a"><xsl:text>Canadian theses = Théses canadiennes</xsl:text></subfield>
 			</datafield>
