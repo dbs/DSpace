@@ -71,7 +71,7 @@
 			</xsl:for-each>
 			<xsl:for-each select="doc:metadata/doc:element[@name='dc']/doc:element[@name='description']/doc:element[@name='abstract']/doc:element/doc:field[@name='value']">
 			<datafield ind2=" " ind1=" " tag="520">
-				<subfield code="a"><xsl:value-of select="." /></subfield>
+				<subfield code="a"><xsl:value-of select="normalize-space(.)" /></subfield>
 			</datafield>
 			</xsl:for-each>
 			<xsl:for-each select="doc:metadata/doc:element[@name='dc']/doc:element[@name='subject']/doc:element/doc:field[@name='value']">
