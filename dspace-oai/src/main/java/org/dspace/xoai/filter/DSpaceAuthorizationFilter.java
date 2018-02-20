@@ -9,18 +9,25 @@
 package org.dspace.xoai.filter;
 
 import java.sql.SQLException;
+<<<<<<< HEAD
 import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.dspace.authorize.AuthorizeManager;
+=======
+
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
+import org.dspace.authorize.factory.AuthorizeServiceFactory;
+import org.dspace.authorize.service.AuthorizeService;
+>>>>>>> dspace-6.2
 import org.dspace.content.Item;
 import org.dspace.core.Constants;
-import org.dspace.core.Context;
-import org.dspace.handle.HandleManager;
+import org.dspace.handle.factory.HandleServiceFactory;
+import org.dspace.handle.service.HandleService;
 import org.dspace.xoai.data.DSpaceItem;
-import org.dspace.xoai.filter.results.DatabaseFilterResult;
 import org.dspace.xoai.filter.results.SolrFilterResult;
 
 /**
@@ -29,20 +36,17 @@ import org.dspace.xoai.filter.results.SolrFilterResult;
  */
 public class DSpaceAuthorizationFilter extends DSpaceFilter
 {
+<<<<<<< HEAD
     private static Logger log = LogManager.getLogger(DSpaceAuthorizationFilter.class);
+=======
+    private static final Logger log = LogManager.getLogger(DSpaceAuthorizationFilter.class);
 
-    @Override
-    public DatabaseFilterResult buildDatabaseQuery(Context context)
-    {
-        List<Object> params = new ArrayList<Object>();
-        return new DatabaseFilterResult("EXISTS (SELECT p.action_id FROM "
-                + "resourcepolicy p, " + "bundle2bitstream b, " + "bundle bu, "
-                + "item2bundle ib " + "WHERE " + "p.resource_type_id=0 AND "
-                + "p.resource_id=b.bitstream_id AND "
-                + "p.epersongroup_id=0 AND " + "b.bundle_id=ib.bundle_id AND "
-                + "bu.bundle_id=b.bundle_id AND " + "bu.name='ORIGINAL' AND "
-                + "ib.item_id=i.item_id)", params);
-    }
+    private static final AuthorizeService authorizeService
+            = AuthorizeServiceFactory.getInstance().getAuthorizeService();
+>>>>>>> dspace-6.2
+
+    private static final HandleService handleService
+            = HandleServiceFactory.getInstance().getHandleService();
 
     @Override
     public boolean isShown(DSpaceItem item)
@@ -54,12 +58,20 @@ public class DSpaceAuthorizationFilter extends DSpaceFilter
             String handle = DSpaceItem.parseHandle(item.getIdentifier());
             if (handle == null)
                 return false;
+<<<<<<< HEAD
             Item dspaceItem = (Item) HandleManager.resolveToObject(context, handle);
+=======
+            Item dspaceItem = (Item) handleService.resolveToObject(context, handle);
+>>>>>>> dspace-6.2
             if (dspaceItem == null)
                 return false;
 
             // Check if READ access allowed on Item
+<<<<<<< HEAD
             pub = AuthorizeManager.authorizeActionBoolean(context, dspaceItem, Constants.READ);
+=======
+            pub = authorizeService.authorizeActionBoolean(context, dspaceItem, Constants.READ);
+>>>>>>> dspace-6.2
         }
         catch (SQLException ex)
         {
