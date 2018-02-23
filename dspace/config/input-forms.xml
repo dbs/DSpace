@@ -199,6 +199,28 @@ it, please enter the types and the actual numbers or codes.</hint>
          <hint>Enter any other description or comments in this box. </hint>
          <required></required>
        </field>
+
+       <field>
+         <dc-schema>dc</dc-schema>
+         <dc-element>description</dc-element>
+         <dc-qualifier>degree</dc-qualifier>
+         <repeatable>false</repeatable>
+         <label>Degree Name (for thesis submissions only)</label>
+         <input-type>onebox</input-type>
+         <hint>Degree Name (for example, "Doctor of Philosophy (PhD) in Rural and Northern Health")</hint>
+         <required></required>
+       </field>
+
+       <field>
+         <dc-schema>dc</dc-schema>
+         <dc-element>publisher</dc-element>
+         <dc-qualifier>grantor</dc-qualifier>
+         <repeatable>false</repeatable>
+         <label>Degree Grantor (for Thesis submissions only)</label>
+         <input-type value-pairs-name="degree_grantor">dropdown</input-type>
+         <hint>Degree Grantor (normally "Laurentian University of Sudbury")</hint>
+         <required></required>
+       </field>
      </page>
    </form>
 
@@ -398,6 +420,17 @@ it, please enter the types and the actual numbers or codes.</hint>
      <pair>
        <displayed-value>(Other)</displayed-value>
        <stored-value>other</stored-value>
+     </pair>
+   </value-pairs>
+
+   <value-pairs value-pairs-name="degree_grantor" dc-term="publisher">
+     <pair>
+       <displayed-value>N/A</displayed-value>
+       <stored-value></stored-value>
+     </pair>
+     <pair>
+       <displayed-value>Laurentian University of Sudbury</displayed-value>
+       <stored-value>Laurentian University of Sudbury</stored-value>
      </pair>
    </value-pairs>
 
