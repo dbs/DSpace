@@ -106,6 +106,13 @@ span.batchimport-error-tab {
 span.batchimport-error-caused {
 	font-weight:bold;
 }
+
+.break-all{
+	-ms-word-break:   break-all;
+	word-break:       break-all;
+	word-wrap:        break-word;
+}
+
 .statsTable td {
     border: #222 solid 1px;
     font-size: 0.8em;
@@ -122,10 +129,8 @@ span.batchimport-error-caused {
     }
 }
 
-
 /* Customizations */
 
- .discovery-query select, .discovery-query input, .discovery-search-filters
- input {
+.discovery-query select, .discovery-query input, .discovery-search-filters input {
      max-width: 16em;
- }
+}
