@@ -7,10 +7,6 @@
  */
 package org.dspace.xoai.filter;
 
-<<<<<<< HEAD
-import java.sql.SQLException;
-=======
->>>>>>> dspace-6.2
 import java.util.ArrayList;
 import java.util.List;
 

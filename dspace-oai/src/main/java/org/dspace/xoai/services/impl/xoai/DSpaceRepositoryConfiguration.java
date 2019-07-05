@@ -74,15 +74,9 @@ public class DSpaceRepositoryConfiguration implements RepositoryConfiguration
         HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.currentRequestAttributes()).getRequest();
         if (baseUrl == null)
         {
-<<<<<<< HEAD
-            baseUrl = configurationService.getProperty("oai", "dspace.oai.url");
-            if (baseUrl == null) {
-                log.warn("{ OAI 2.0 :: DSpace } Not able to retrieve the dspace.oai.url property from oai.cfg. Falling back to request address");
-=======
             baseUrl = configurationService.getProperty("oai.url");
             if (baseUrl == null) {
                 log.warn("{ OAI 2.0 :: DSpace } Not able to retrieve the oai.url property from oai.cfg. Falling back to request address");
->>>>>>> dspace-6.2
                 baseUrl = request.getRequestURL().toString()
                     .replace(request.getPathInfo(), "");    
             }

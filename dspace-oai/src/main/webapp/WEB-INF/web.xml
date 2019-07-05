@@ -20,21 +20,6 @@
 		<param-value>${dspace.dir}</param-value>
 	</context-param>
 
-<<<<<<< HEAD
-        <!--
-          DSpace Kernel startup listener. This listener is in charge of initializing/starting the
-          DSpace Kernel. It MUST be listed BEFORE any other DSpace listeners, as DSpace services
-          will not function until the Kernel is initialized.
-         -->
-        <listener>
-                <listener-class>org.dspace.servicemanager.servlet.DSpaceKernelServletContextListener</listener-class>
-        </listener>
-
-	<listener>
-		<listener-class>org.dspace.app.util.DSpaceContextListener</listener-class>
-	</listener>
-=======
->>>>>>> dspace-6.2
 
     <!-- Location of root application context configs (to be loaded by ContextLoaderListener below) -->
     <!-- This contains the beans that initialize DSpace Services -->
