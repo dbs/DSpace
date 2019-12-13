@@ -83,7 +83,9 @@
 			<xsl:for-each select="doc:metadata/doc:element[@name='bundles']/doc:element/doc:field[text()='ORIGINAL']">
 				<xsl:for-each select="../doc:element[@name='bitstreams']/doc:element">
 					<identifier>
-                        <xsl:value-of select="concat('https://', doc:field[@name='url']/text())"/>
+						<xsl:call-template name="replace-jspui">
+							<xsl:with-param name="text" select="doc:field[@name='url']/text()" />
+						</xsl:call-template>
 					</identifier>
 					<format>
 						<xsl:value-of select="doc:field[@name='format']/text()" />
@@ -139,5 +141,38 @@
 			</degree>
 			</xsl:if>
 		</thesis>
+	</xsl:template>
+  <!-- XSLT 1.0 does not have a replace() function for strings -->
+  <!-- workaround from https://stackoverflow.com/questions/3067113/xslt-string-replace -->
+	<xsl:template name="string-replace-all">
+		<xsl:param name="text" />
+		<xsl:param name="replace" />
+		<xsl:param name="by" />
+		<xsl:choose>
+			<xsl:when test="$text = '' or $replace = ''or not($replace)" >
+				<!-- Prevent this routine from hanging -->
+				<xsl:value-of select="$text" />
+			</xsl:when>
+			<xsl:when test="contains($text, $replace)">
+				<xsl:value-of select="substring-before($text,$replace)" />
+				<xsl:value-of select="$by" />
+				<xsl:call-template name="string-replace-all">
+					<xsl:with-param name="text" select="substring-after($text,$replace)" />
+					<xsl:with-param name="replace" select="$replace" />
+					<xsl:with-param name="by" select="$by" />
+				</xsl:call-template>
+			</xsl:when>
+			<xsl:otherwise>
+				<xsl:value-of select="$text" />
+			</xsl:otherwise>
+		</xsl:choose>
+	</xsl:template>
+	<xsl:template name="replace-jspui">
+		<xsl:param name="text" />
+		<xsl:call-template name="string-replace-all">
+			<xsl:with-param name="text" select="$text" />
+			<xsl:with-param name="replace" select="'/jspui/'" />
+			<xsl:with-param name="by" select="'/dspace/'" />
+		</xsl:call-template>
 	</xsl:template>
 </xsl:stylesheet>
