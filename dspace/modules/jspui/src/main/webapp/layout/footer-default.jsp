@@ -41,7 +41,7 @@
              <footer class="navbar navbar-inverse navbar-bottom">
              <div id="designedby" class="container text-muted">
       <div id="footer_feedback" class="pull-right">                                    
-                                <a target="_blank" href="http://biblio.laurentian.ca/research/contact-us"><fmt:message key="jsp.layout.footer-default.feedback"/></a>
+                                <a href="https://biblio.laurentian.ca/research/contact-us"><fmt:message key="jsp.layout.footer-default.feedback"/></a>
                                 </div>
       </div>
     </footer>

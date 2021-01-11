@@ -56,7 +56,7 @@
 
 
        <div class="navbar-header">
-         <a class="navbar-brand" href="http://biblio.laurentian.ca"><img height="25" src="<%= request.getContextPath() %>/image/lu-logo-only.png" alt="LU logo" /></a>
+         <a class="navbar-brand" href="https://biblio.laurentian.ca"><img height="25" src="<%= request.getContextPath() %>/image/lu-logo-only.png" alt="LU logo" /></a>
        </div>
        <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
         <ul class="nav navbar-nav">
